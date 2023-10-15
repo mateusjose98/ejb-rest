@@ -50,7 +50,7 @@ public class AgendamentoEmailBusiness {
 		agendamento.setEnviado(false);
 		agendamentoEmailDao.salvarAgendamento(agendamento);
 		
-		if (true) throw new RuntimeException();
+		
 	}
 	
 	public List<AgendamentoEmail> listarAgendamentosNaoEnviados() {
