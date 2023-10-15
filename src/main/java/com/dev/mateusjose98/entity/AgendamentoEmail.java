@@ -4,6 +4,8 @@ package com.dev.mateusjose98.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class AgendamentoEmail {
@@ -11,9 +13,15 @@ public class AgendamentoEmail {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotBlank(message = "Email inválido, não pode ser vazio.")
+	@Email
 	private String email;
+
 	private Boolean enviado;
-	
+	@NotBlank(message="Assunto não pode ser vazio.")
+	private String assunto;
+	@NotBlank(message="Mensagem não pode ser  vazia")
+	private String mensagem;
 	public Long getId() {
 		return id;
 	}
@@ -32,6 +40,20 @@ public class AgendamentoEmail {
 	public void setEnviado(Boolean enviado) {
 		this.enviado = enviado;
 	}
+	public String getAssunto() {
+		return assunto;
+	}
+	public void setAssunto(String assunto) {
+		this.assunto = assunto;
+	}
+	public String getMensagem() {
+		return mensagem;
+	}
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+	
+	
 	
 	
 }
