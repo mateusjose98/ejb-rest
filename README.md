@@ -1,5 +1,10 @@
 # EJB 3 + JPA - Curso Alura
 
+### Objetivo
+
+A aplicação provê endpoints JAXRS que recebem e listam agendamentos de emails. 
+Os agendamentos são salvos como não enviados. De tempos em tempos (todo minuto, no momento) um job envia os agendamentos para uma fila JMS para futuramente serem de fato enviados.
+
 ## Tecnologias utilizadas
 - MySql 5.6
 - Java 8
