@@ -2,10 +2,11 @@
 
 ### Objetivo
 
-A aplicação provê endpoints JAXRS que recebem e listam agendamentos de emails. 
+A aplicação provê endpoints JAXRS que recebem e listam agendamentos de emails.
 Os agendamentos são salvos como não enviados. De tempos em tempos (todo minuto, no momento) um job envia os agendamentos para uma fila JMS para futuramente serem de fato enviados.
 
 ## Tecnologias utilizadas
+
 - MySql 5.6
 - Java 8
 - Wildfly 15 com standalone-full.xml
@@ -13,7 +14,7 @@ Os agendamentos são salvos como não enviados. De tempos em tempos (todo minuto
 - JavaMail
 - JMS
 
-##Configurações
+## Configurações
 
 Observações: os comandos devem ser executados dentro do servidor, para acessá-lo, utilize: `wildfly-instalation\bin\jboss-cli.[bat/sh] --connect`
 
@@ -27,7 +28,7 @@ Observações: os comandos devem ser executados dentro do servidor, para acessá
 
 - /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.cj.jdbc.MysqlXADataSource)
 
-- data-source add --name=AgendamentoDS --jndi-name=java:jboss/datasources/AgendamentoDS --driver-name=mysql  --connection-url=jdbc:mysql://localhost:3306/agendamentobd --user-name=root --password=pass --min-pool-size=10 --max-pool-size=20
+- data-source add --name=AgendamentoDS --jndi-name=java:jboss/datasources/AgendamentoDS --driver-name=mysql --connection-url=jdbc:mysql://localhost:3306/agendamentobd --user-name=root --password=pass --min-pool-size=10 --max-pool-size=20
 
 Após realizar isso, é necessário ter o persistence.xml para que a aplicação saiba como se conectar. Exemplo:
 
@@ -53,11 +54,9 @@ Após realizar isso, é necessário ter o persistence.xml para que a aplicação
 
 - /subsystem=mail/mail-session=agendamentoMailSession/server=smtp:add(outbound-socket-binding-ref= my-smtp-binding, username=SEUU_SUARIO, password=SUA_SENHA, tls=true)
 
-
 ### Criar uma fila JMS no wildfly
 
 jms-queue add --queue-address=EmailQueue --entries=java:/jms/queue/EmailQueue
-
 
 ### Testando a aplicação:
 
