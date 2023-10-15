@@ -36,7 +36,7 @@ public class AgendamentoEmailResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response criarNovo(AgendamentoEmail agendamento) throws BusinessException {
-		logger.info("Criando um agendamento!");
+		logger.info("Resource: Criando um agendamento!");
 			agendamentoEmailBusiness.criarNovo(agendamento);
 			return Response.status(201).build();
 	}

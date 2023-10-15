@@ -18,7 +18,7 @@ public class LogInterceptor {
 
 	@AroundInvoke
 	public Object handleException(InvocationContext context) throws Exception {
-		logger.info("Caiu no interceptor!!!");
+		logger.info("Interceptor de log!");
 		try {
 		
 			return context.proceed();

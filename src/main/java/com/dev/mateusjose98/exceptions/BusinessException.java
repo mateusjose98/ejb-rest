@@ -3,6 +3,9 @@ package com.dev.mateusjose98.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback = true)
 public class BusinessException extends Exception{
 	
 

@@ -38,6 +38,10 @@ public class AgendamentoEmailDao {
 						+ "where a.enviado = false", AgendamentoEmail.class);
 		return  query.getResultList();
 	}
+	
+	public void atualizarAgendamento(AgendamentoEmail agendamento) {
+		entityManager.merge(agendamento);
+	}
 
 
 }

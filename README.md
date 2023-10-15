@@ -1,4 +1,4 @@
-## EJB 3 + JPA - Curso Alura
+# EJB 3 + JPA - Curso Alura
 
 ## Tecnologias utilizadas
 - MySql 5.6
@@ -8,8 +8,11 @@
 - JavaMail
 - JMS
 
+##Configurações
 
-## Configurar um datasource no wildfly
+Observações: os comandos devem ser executados dentro do servidor, para acessá-lo, utilize: `wildfly-instalation\bin\jboss-cli.[bat/sh] --connect`
+
+### Configurar um datasource no wildfly
 
 - module remove --name=com.mysql
 
@@ -37,10 +40,26 @@ Após realizar isso, é necessário ter o persistence.xml para que a aplicação
 </persistence>
 ```
 
-## Configurar email no wildfly
+### Configurar email no wildfly
 
 - /subsystem=mail/mail-session=agendamentoMailSession:add(jndi-name=java:jboss/mail/AgendamentoMailSession)
 
 - /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=my-smtp-binding:add(host=SEU_HOST, port=2525)
 
 - /subsystem=mail/mail-session=agendamentoMailSession/server=smtp:add(outbound-socket-binding-ref= my-smtp-binding, username=SEUU_SUARIO, password=SUA_SENHA, tls=true)
+
+
+### Criar uma fila JMS no wildfly
+
+jms-queue add --queue-address=EmailQueue --entries=java:/jms/queue/EmailQueue
+
+
+### Testando a aplicação:
+
+Adicione o wildfly em sua IDE
+
+Use as configurações anteriores no wildfly
+
+Adicione a aplicação ao wildfly
+
+Acesse no navegador o link `http://localhost:8080/ `
